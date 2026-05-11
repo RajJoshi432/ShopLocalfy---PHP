@@ -1,0 +1,80 @@
+/* ============================================================
+   ShopLocalfy — responsive.css  (load last)
+   ============================================================ */
+
+/* ── 1100px ── */
+@media (max-width: 1100px) {
+  .stat-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── 900px ── */
+@media (max-width: 900px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 768px — sidebar goes off-canvas ── */
+@media (max-width: 768px) {
+  /* Sidebar hidden by default on mobile */
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    z-index: 100;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0,0,0,.18);
+  }
+
+  /* Main content takes full width */
+  .main-content {
+    margin-left: 0 !important;
+    transition: none;
+  }
+
+  /* Overlay shown when sidebar is open */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 99;
+    cursor: pointer;
+  }
+  .sidebar-overlay.active { display: block; }
+
+  .stat-cards   { grid-template-columns: 1fr 1fr; }
+  .page-body    { padding: 16px 16px 32px; }
+  .topbar       { padding: 0 16px; }
+  .form-row     { grid-template-columns: 1fr; }
+  .form-card    { padding: 18px 16px; }
+  .stat-value   { font-size: 20px; }
+}
+
+/* ── 600px ── */
+@media (max-width: 600px) {
+  .breadcrumb-nav .breadcrumb-sep,
+  .breadcrumb-nav .breadcrumb-parent { display: none; }
+
+  .btn-approve span { display: none; }
+  .btn-approve      { padding: 7px 10px; }
+
+  .form-actions          { flex-direction: column; }
+  .form-actions .btn     { width: 100%; justify-content: center; }
+
+  .modal-actions              { flex-direction: column-reverse; }
+  .modal-actions .btn-cancel,
+  .modal-actions .btn-deny    { width: 100%; justify-content: center; }
+}
+
+/* ── 480px ── */
+@media (max-width: 480px) {
+  .stat-cards  { grid-template-columns: 1fr; }
+  .topbar      { padding: 0 12px; height: 52px; }
+  .page-body   { padding: 12px 12px 28px; }
+  .stat-value  { font-size: 22px; }
+  .card-title  { font-size: 13px; }
+
+  /* Wrap tables so they scroll horizontally instead of squishing */
+  .card-body        { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table       { min-width: 460px; }
+}
